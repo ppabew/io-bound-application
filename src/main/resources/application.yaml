@@ -14,7 +14,11 @@ spring:
       ddl-auto: update
 
   rabbitmq:
-    host: 128.134.244.183
+    host: 10.178.0.12
     username: guest
     password: guest
     port: 5672
+  data:
+    elasticsearch:
+      hosts: 10.146.0.4,10.146.0.5,10.146.0.6,10.146.0.7
+      port: 9200
