@@ -1,12 +1,16 @@
 package class101.foo.io;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class PostController {
+    @Value("${passwd}")
+    private String passwd;
+
 
     @Autowired
     PostRepository postRepository;
@@ -20,6 +24,7 @@ public class PostController {
     // 2-1. 글 목록을 조회한다.
     @GetMapping("/posts")
     public List<Post> getPostList() {
+        System.out.println(passwd);
         return postRepository.findAll();
     }
     
