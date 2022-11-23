@@ -1,8 +1,12 @@
+server:
+  port: 8090
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgresql
-    username: postgresql
-    password: postgrespassword
+    url: jdbc:postgresql://128.134.244.183:5432/postgres?currentSchema=class101
+    username: postgres
+    password: ${datasource.passwd}
+
   jpa:
     show-sql: true
     hibernate:
