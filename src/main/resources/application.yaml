@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://128.134.244.183:5432/postgres?currentSchema=class101
     username: postgres
-    password: ${passwd}
+    password: ${datasource.passwd}
 
   jpa:
     show-sql: true
