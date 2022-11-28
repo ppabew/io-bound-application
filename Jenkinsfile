@@ -6,10 +6,10 @@ pipeline {
             steps {
                 script {
                     IMAGE_NAME = "io-bound-jenkins"
-                    IMAGE_STORAGE = "Container Registry 경로"
-                    IMAGE_STORAGE_CREDENTIAL = "Container Registry 접근 Credential id"
-                    SSH_CONNECTION = "접속할 계정@배포할 서버 IP"
-                    SSH_CONNECTION_CREDENTIAL = "SSH 서버 접근 Credential id"
+                    IMAGE_STORAGE = "/var/jenkins_home/docker/"
+                    IMAGE_STORAGE_CREDENTIAL = "ppabew"
+                    SSH_CONNECTION = "root@172.27.0.89"
+                    SSH_CONNECTION_CREDENTIAL = "ppabew"
                 }
             }
         }
