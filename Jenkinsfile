@@ -21,7 +21,7 @@ pipeline {
     stage('Build Container Image by Maven') {
         steps {
             withMaven(maven: 'M3') {
-                      sh 'mvn docker build -t ${IMAGE_STORAGE}/${IMAGE_NAME} .'
+                      sh "mvn docker build -t ppabew/io-bound-jenkins ."
             }
         }
     }
