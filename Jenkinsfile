@@ -10,13 +10,17 @@ pipeline {
           SSH_CONNECTION = "root@172.27.0.89"
           SSH_CONNECTION_CREDENTIAL = "ppabew"
         }
-
-        withMaven(maven: 'M3') {
-          sh 'mvn clean install'
-        }
-
       }
     }
+
+    stage('Build Maven') {
+        steps {
+            withMaven(maven: 'M3') {
+                      sh 'mvn clean install'
+            }
+        }
+    }
+
 
     stage('Build Container Image') {
       steps {
