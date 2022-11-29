@@ -6,17 +6,23 @@ pipeline {
         script {
           IMAGE_NAME = "io-bound-jenkins"
           IMAGE_STORAGE = "ppabew"
+          IMAGE_STORAGE_CREDENTIAL = "ppabew"
+          SSH_CONNECTION = "root@172.27.0.89"
+          SSH_CONNECTION_CREDENTIAL = "ppabew"
         }
+
+        withMaven(maven: 'M3') {
+          sh 'mvn clean install'
+        }
+
       }
     }
 
-    stage('Remove Docker Image') {
-            steps {
-                script {
-                    sh "docker rm -f ${IMAGE_STORAGE}/${IMAGE_NAME};"
-                }
-            }
-    }
+    stage('Build Container Image') {
+      steps {
+        script {
+          image = docker.build("${IMAGE_STORAGE}/${IMAGE_NAME}")
+        }
 
     stage('Build Container Image by Maven') {
         steps {
@@ -29,8 +35,9 @@ pipeline {
     stage('Push Container Image') {
       steps {
         script {
-         sh "docker push ${IMAGE_STORAGE}/${IMAGE_NAME}"
+          sh "docker push ${IMAGE_STORAGE}/${IMAGE_NAME}"
         }
+
       }
     }
 
@@ -40,5 +47,6 @@ pipeline {
         sh "docker ps -a"
       }
     }
+
   }
 }
