@@ -6,7 +6,7 @@ pipeline {
         script {
           IMAGE_NAME = "io-bound-jenkins"
           IMAGE_STORAGE = "ppabew"
-          IMAGE_STORAGE_CREDENTIAL = "ppabew"
+          IMAGE_STORAGE_CREDENTIAL = "docker-hub"
           SSH_CONNECTION = "root@172.27.0.89"
           SSH_CONNECTION_CREDENTIAL = "ppabew"
         }
