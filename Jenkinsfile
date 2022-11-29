@@ -39,9 +39,12 @@ pipeline {
     stage('Push Container Image') {
       steps {
         script {
-          sh "docker push ${IMAGE_STORAGE}/${IMAGE_NAME}"
+          docker.withRegistry("https://${IMAGE_STORAGE}", IMAGE_STORAGE_CREDENTIAL) {
+            image.push("${env.BUILD_NUMBER}")
+            image.push("latest")
+            image
+          }
         }
-
       }
     }
 
