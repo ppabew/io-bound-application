@@ -50,7 +50,7 @@ pipeline {
 
     stage('Server Run') {
       steps {
-        sh "docker run -e datasource.passwd='mw9129(!@(' -d -p 8090:8090 --name io-bound-worker1 ${IMAGE_STORAGE}/${IMAGE_NAME};"
+        sh "docker run -e datasource.passwd='mw9129(!@(' -d -p 8090:8090 --name ${IMAGE_NAME} ${IMAGE_STORAGE}/${IMAGE_NAME}:latest;"
         sh "docker ps -a"
       }
     }
