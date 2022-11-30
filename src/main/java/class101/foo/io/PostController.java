@@ -27,7 +27,7 @@ public class PostController {
 
     // 2. 글 목록을 페이징하여 반환
     @GetMapping("/posts")
-    public Page<Post> getPostList(@RequestParam Integer page) {
+    public Page<Post> getPostList(@RequestParam(defaultValue = "1") Integer page) {
         return postRepository.findAll(
                 PageRequest.of(page - 1, PAGE_SIZE, Sort.by("id").descending())
         );
